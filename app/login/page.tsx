@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { loginUser } from "../service/auth.service";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const router = useRouter();
@@ -15,30 +17,24 @@ export default function Login() {
     e.preventDefault();
     setError("");
 
+    const loadingToast = toast.loading("Logging in...");
+
     try {
-      const formBody = new URLSearchParams();
-      formBody.append("email", email);
-      formBody.append("password", password);
+      const data = await loginUser(email, password);
 
-      const res = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formBody.toString(),
-      });
-
-      if (!res.ok) {
-        throw new Error("Login failed");
-      }
-
-      const data = await res.json();
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
+
+      toast.success("Login successful!", {
+        id: loadingToast,
+      });
 
       router.push("/dashboard");
     } catch (err: any) {
       console.error(err);
+      toast.error("Invalid email or password", {
+        id: loadingToast,
+      });
       setError("Invalid email or password");
     }
   };
@@ -125,7 +121,7 @@ export default function Login() {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="font-medium text-blue-600 hover:text-blue-500">
               Sign up
             </Link>
