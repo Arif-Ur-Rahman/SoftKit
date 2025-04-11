@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { loginUser } from "../service/auth.service";
+import { loginUser } from "../../../services/auth.service";
 import toast from "react-hot-toast";
 
 export default function Login() {

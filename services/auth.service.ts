@@ -1,5 +1,4 @@
-// services/auth.service.ts
-
+// services/auth.service.ts for login API call
 export const loginUser = async (email: string, password: string) => {
     const formBody = new URLSearchParams();
     formBody.append("email", email);
@@ -22,8 +21,7 @@ export const loginUser = async (email: string, password: string) => {
   
 
 
-  // services/auth.service.ts
-
+  // services/auth.service.ts for login API call
 export const registerUser = async (username: string, email: string, password: string) => {
     const res = await fetch("http://localhost:3000/api/auth/register", {
       method: "POST",
