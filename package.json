@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "lint": "next lint",
+    "dev": "cross-env PORT=3001 next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "cross-env PORT=3001 next start"
   },
   "dependencies": {
     "next": "15.2.4",
@@ -19,6 +19,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4"
