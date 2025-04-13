@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { Search, Heart, ShoppingCart, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import Sidebar from "../../components/shared/sidebar"
 
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0)
@@ -13,7 +14,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Announcement Bar */}
-      <div className="bg-black text-white py-2 px-4 text-center flex justify-between items-center">
+      <div className="bg-black text-white py-2 px-20 text-center flex justify-between items-center">
         <div className="flex-1"></div>
         <div className="flex-1 text-center">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
@@ -28,7 +29,7 @@ export default function HomePage() {
       </div>
 
       {/* Header */}
-      <header className="border-b border-gray-200 py-4 px-6">
+      <header className="border-b border-gray-200 py-4 px-20">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold">
             Exclusive
@@ -68,45 +69,13 @@ export default function HomePage() {
         </div>
       </header>
 
-      <div className="flex flex-1">
-        {/* Sidebar */}
-        <aside className="w-64 border-r border-gray-200 hidden md:block p-6">
-          <nav className="space-y-4">
-            <div className="flex items-center justify-between py-2 hover:text-gray-600 cursor-pointer">
-              <span>Woman's Fashion</span>
-              <ChevronRight className="h-5 w-5" />
-            </div>
-            <div className="flex items-center justify-between py-2 hover:text-gray-600 cursor-pointer">
-              <span>Men's Fashion</span>
-              <ChevronRight className="h-5 w-5" />
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Electronics</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Home & Lifestyle</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Medicine</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Sports & Outdoor</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Baby's & Toys</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Groceries & Pets</span>
-            </div>
-            <div className="py-2 hover:text-gray-600 cursor-pointer">
-              <span>Health & Beauty</span>
-            </div>
-          </nav>
-        </aside>
+      <div className="flex flex-1 pl-15">
+        {/* Sidebar Component */}
+        <Sidebar />
 
         {/* Main Content */}
-        <main className="flex-1 p-4">
-          <div className="relative bg-black text-white rounded-lg overflow-hidden">
+        <main className="flex-1 p-4 pr-20">
+          <div className="relative bg-black text-white rounded-0 overflow-hidden">
             <div className="p-12 md:p-16 flex flex-col md:flex-row items-center">
               <div className="md:w-1/2 z-10">
                 <div className="flex items-center mb-6">
